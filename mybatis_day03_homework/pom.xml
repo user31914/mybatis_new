@@ -9,8 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>hhit</groupId>
-    <artifactId>day01_homework</artifactId>
+    <artifactId>mybatis_day03_homework</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

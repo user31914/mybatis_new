@@ -13,6 +13,9 @@
         <module>homework</module>
         <module>mybatis_day02</module>
         <module>day02_homework</module>
+        <module>mybatis_day03</module>
+        <module>mybatis_day03_mapper</module>
+        <module>mybatis_day03_homework</module>
     </modules>
 
     <properties>
