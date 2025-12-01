@@ -16,6 +16,8 @@
         <module>mybatis_day03</module>
         <module>mybatis_day03_mapper</module>
         <module>day03_homework</module>
+        <module>mybatis_day04_annotation</module>
+        <module>day04_homework</module>
     </modules>
 
     <properties>
