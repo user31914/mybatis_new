@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="teacher">
+    <insert id="insert" parameterType="com.hhit.model.Teacher">
+        insert into teacher values (null,#{name},#{addr},#{age},#{job},#{sal});
+    </insert>
+    <select id="selectByAddr" parameterType="string" resultType="com.hhit.model.Teacher">
+        select id,name,addr,age,job,sal from teacher where addr like #{addr}"%";
+    </select>
+    <select id="calAvgSalary" resultType="decimal" parameterType="string">
+        select avg(sal) from teacher where addr like #{addr}"%"
+    </select>
+    <update id="updateJob" parameterType="com.hhit.model.Teacher">
+        update teacher set job = '销售经理' where age > #{age} and job = #{job}
+    </update>
+    <delete id="deleteEmp" parameterType="int">
+        delete from teacher where age >= #{age}
+    </delete>
+</mapper>

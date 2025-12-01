@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="student">
+    <insert id="insert" >
+        insert into student values (default,'张三',33,'男')
+    </insert>
+    <insert id="insertObject" parameterType="com.hhit.model.Student">
+        insert into student values(null,#{name},#{age},#{gender})
+    </insert>
+    <insert id="insertObjectAndGetId" parameterType="com.hhit.model.Student">
+     <selectKey keyProperty="id" keyColumn="id" resultType="int" order="AFTER">
+         SELECT LAST_INSERT_ID()
+     </selectKey>
+     insert into student values(null,#{name},#{age},#{gender})
+    </insert>
+    <!--通过id删除-->
+    <delete id="deleteById" parameterType="int">
+        delete from student where id = #{id}
+    </delete>
+    <!--通过名字模糊删除-->
+    <delete id="deleteByName" parameterType="string">
+        delete from student where name like #{name}"%"
+    </delete>
+
+    <!--更新操作-->
+    <!--根据id修改-->
+    <update id="update" parameterType="com.hhit.model.Student">
+        update student set name = #{name},age = #{age},gender = #{gender} where id = #{id}
+    </update>
+    <!--根据性别进行范围修改-->
+    <update id="updateByGender" parameterType="com.hhit.model.Student">
+        update student set age = #{age} where gender = #{gender}
+    </update>
+
+    <!--查询操作-->
+    <!--查全表-->
+    <select id="selectList" resultType="com.hhit.model.Student">
+        select id,name,age,gender from student
+    </select>
+    <!--通过id查-->
+    <select id="selectById" resultType="com.hhit.model.Student" parameterType="int">
+        select id,name,age,gender from student where id =#{id}
+    </select>
+
+    <!--通过条件查询-->
+    <select id="selectByCondition" resultType="com.hhit.model.Student" parameterType="com.hhit.model.Student">
+        select id,name,age,gender from student where gender = #{gender} and age >#{age}
+    </select>
+</mapper>
