@@ -18,6 +18,8 @@
         <module>day03_homework</module>
         <module>mybatis_day04_annotation</module>
         <module>day04_homework</module>
+        <module>mybatis_day05_dynamicSql</module>
+        <module>day05_homework</module>
     </modules>
 
     <properties>

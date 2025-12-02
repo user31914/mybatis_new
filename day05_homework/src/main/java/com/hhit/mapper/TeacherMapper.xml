@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hhit.mapper.TeacherMapper">
+    <!--插入数据-->
+    <insert id="insertTeacher" >
+        insert into teacher values
+            <foreach collection="list" item="teacher" separator=",">
+                (default,#{teacher.name},#{teacher.addr},#{teacher.age},#{teacher.job},#{teacher.sal})
+            </foreach>
+    </insert>
+    <!--查询全部数据-->
+    <select id="selectList" resultType="teacher">
+        select *from teacher
+    </select>
+    <!--通过城市查找-->
+    <select id="selectByCity" parameterType="string" resultType="teacher">
+        select * from teacher
+        <bind name="province" value="'%'+province"/>
+        <where>
+            <if test="addr != null and addr!= ''">
+               and  addr like #{province}
+            </if>
+        </where>
+    </select>
+    
+    <!--通过省份统计平均薪资-->
+    <select id="calAvgSal" parameterType="string" resultType="BigDecimal">
+        select avg(sal) from teacher
+        <bind name="city" value="city+'%'"/>
+        <where>
+            <if test="city!=null and city != ''">
+                addr like #{city}
+            </if>
+        </where>
+    </select>
+
+    <!--通过给定城市修改薪资以及职位-->
+    <update id="updateSalAndJob" parameterType="teacher">
+        <bind name="city" value="'%'+addr"/>
+        update teacher
+        <set>
+          <if test="sal != null and sal != 0">
+              sal = #{sal},
+          </if>
+            <if test="job != null and job != ''">
+                job = #{job}
+            </if>
+        </set>
+        where addr like #{city}
+    </update>
+
+    <!--通过给定id数组进行删除-->
+    <delete id="deleteByIds">
+        delete from teacher
+       <where>
+           <foreach collection="list" item="id" open="id in (" close=")" separator=",">
+               #{id}
+           </foreach>
+       </where>
+    </delete>
+
+</mapper>
