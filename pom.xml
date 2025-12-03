@@ -20,6 +20,10 @@
         <module>day04_homework</module>
         <module>mybatis_day05_dynamicSql</module>
         <module>day05_homework</module>
+        <module>mybatis_day06_oneByone</module>
+        <module>mybatis_day06_oneToMany</module>
+        <module>mybatis_day06_manyToMany</module>
+        <module>day06_homework</module>
     </modules>
 
     <properties>
