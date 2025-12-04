@@ -24,6 +24,11 @@
         <module>mybatis_day06_oneToMany</module>
         <module>mybatis_day06_manyToMany</module>
         <module>day06_homework</module>
+        <module>mybatis_day07_generator</module>
+        <module>mybatis_day07_lazyLoad</module>
+        <module>mybatis_day07_annotation</module>
+        <module>mybatis_day07_pagetest</module>
+        <module>day07_homework</module>
     </modules>
 
     <properties>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hhit.mapper.PlayerMapper">
+    <resultMap id="p" type="Player" autoMapping="true">
+        <association property="team" javaType="Team" column="tid" autoMapping="true"
+                     select="com.hhit.mapper.TeamMapper.selectById">
+
+        </association>
+    </resultMap>
+
+    <select id="selectList" resultMap="p" >
+        select * from player
+    </select>
+
+    <select id="selectByTid" parameterType="int" resultType="player">
+        select * from player where tid = #{tid}
+    </select>
+</mapper>
